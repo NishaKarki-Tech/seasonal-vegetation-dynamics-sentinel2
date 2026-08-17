@@ -1,194 +1,275 @@
-🌿 Seasonal Vegetation Dynamics Using Sentinel-2 Remote Sensing
-Multi-Index Assessment of Seasonal Vegetation Dynamics in Changunarayan Municipality, Nepal (2025)
+# 🌿 Seasonal Vegetation Dynamics Using Sentinel-2 Remote Sensing
 
-Author: Nisha Karki
-Year: 2026
+## Multi-Index Assessment of Seasonal Vegetation Dynamics in Changunarayan Municipality, Nepal (2025)
 
-📌 Project Overview
+**Author:** Nisha Karki  
+**Year:** 2026
 
-This project analyzes seasonal vegetation dynamics in Changunarayan Municipality, Bhaktapur, Nepal, using Sentinel-2 multispectral satellite imagery.
+---
+
+## 📌 Project Overview
+
+This project analyzes **seasonal vegetation dynamics** in **Changunarayan Municipality, Bhaktapur, Nepal** using **Sentinel-2 multispectral satellite imagery**.
 
 Four vegetation indices were calculated for four seasons of 2025:
 
-NDVI — general vegetation vigor
-GNDVI — chlorophyll and canopy response
-NDRE — chlorophyll and vegetation condition
-SAVI — vegetation response with reduced soil influence
+- **NDVI** — general vegetation vigor
+- **GNDVI** — chlorophyll and canopy response
+- **NDRE** — chlorophyll and vegetation condition
+- **SAVI** — vegetation response with reduced soil influence
 
 The analysis compares how vegetation response changed throughout the year.
 
-The workflow used Google Earth Engine for satellite-image processing, Python / Google Colab for data analysis and visualization, and ArcGIS Pro for spatial mapping.
+The workflow used:
 
-🎯 Objectives
-Analyze seasonal vegetation dynamics using Sentinel-2 imagery.
-Calculate NDVI, GNDVI, NDRE, and SAVI.
-Compare vegetation-index responses across four seasons.
-📍 Study Area
+- **Google Earth Engine** for satellite-image processing
+- **Python / Google Colab** for data analysis and visualization
+- **ArcGIS Pro** for spatial mapping
+- **GitHub** for code and project documentation
 
-Changunarayan Municipality, Bhaktapur, Nepal
+---
 
-The study area contains a mixed landscape including agricultural areas and other land-cover types. The project examines seasonal variation in vegetation response across the municipality.
+## 🎯 Objectives
 
-🛰️ Data
-Item	Details
-Satellite	Sentinel-2
-Sensor	MultiSpectral Instrument (MSI)
-Dataset	COPERNICUS/S2_SR_HARMONIZED
-Study year	2025
-Spatial resolution	10–20 m depending on spectral band
-Platform	Google Earth Engine
-Study area boundary	Changunarayan Municipality
-🛠️ Tools Used
-Tool	Purpose
-Google Earth Engine	Image filtering, SCL masking, seasonal compositing, vegetation-index calculation
-Python / Google Colab	Data analysis, correlation analysis, visualization
-ArcGIS Pro	Spatial visualization and map preparation
-GitHub	Code, data, figures, and documentation
-🔬 Methodology
-Workflow
+- Analyze **seasonal vegetation dynamics** using Sentinel-2 imagery.
+- Calculate **NDVI, GNDVI, NDRE, and SAVI**.
+- Compare vegetation-index responses across **four seasons**.
+- Examine the relationships among the vegetation indices.
+- Visualize seasonal vegetation patterns using **Python and GIS**.
 
-Sentinel-2 imagery
-↓
-Study-area filtering
-↓
-SCL-based pixel masking
-↓
-Seasonal median composites
-↓
-NDVI + GNDVI + NDRE + SAVI
-↓
-Seasonal comparison
-↓
-Correlation analysis and visualization
+---
 
-1️⃣ Sentinel-2 Image Collection
+## 📍 Study Area
 
-Sentinel-2 Surface Reflectance Harmonized imagery was filtered to the Changunarayan Municipality boundary for 2025.
+**Changunarayan Municipality, Bhaktapur, Nepal**
 
-2️⃣ ☁️ Cloud Masking
+The study area contains a mixed landscape including **agricultural areas and other land-cover types**.
 
-The Sentinel-2 Scene Classification Layer (SCL) was used for pixel-level masking.
+The project focuses on understanding how vegetation response varies across the municipality throughout the year.
 
-Pixels classified as:
+---
 
-🌱 Vegetation
-🟤 Bare soil
-💧 Water
+## 🛰️ Satellite Data
 
-were retained.
+### Sentinel-2 MSI Surface Reflectance
 
-Unwanted classes, including clouds and cloud shadows, were masked before creating the seasonal composites.
+- **Satellite:** Sentinel-2
+- **Sensor:** MultiSpectral Instrument (MSI)
+- **Dataset:** `COPERNICUS/S2_SR_HARMONIZED`
+- **Study year:** 2025
+- **Spatial resolution:** 10 m for the main bands used in this analysis
+- **Platform:** Google Earth Engine
 
-3️⃣ 📅 Seasonal Compositing
+A **Changunarayan Municipality boundary** was used to define the study area.
 
-The year was divided into four seasons:
+---
 
-Season	Period
-❄️ Winter	January–February 2025
-🌱 Pre-monsoon	March–May 2025
-🌧️ Monsoon	June–September 2025
-🍂 Post-monsoon	October–December 2025
+## 🛠️ Tools and Their Uses
 
-A median composite was generated for each season.
+| Tool | Purpose |
+|---|---|
+| **Google Earth Engine** | Image filtering, cloud masking, seasonal compositing, and vegetation-index calculation |
+| **Python / Google Colab** | Data analysis, correlation analysis, and visualization |
+| **ArcGIS Pro** | Spatial visualization and map preparation |
+| **GitHub** | Code, data, figures, and documentation |
 
-4️⃣ 🌿 Vegetation-Index Calculation
+---
 
-Four vegetation indices were calculated for each seasonal composite.
+# 🔬 Methodology
 
-🌿 Vegetation Indices
-1. 🟢 NDVI — Normalized Difference Vegetation Index
+### Overall Workflow
 
-Used to assess general vegetation vigor.
+**Sentinel-2 imagery**  
+↓  
+**Study-area filtering**  
+↓  
+**SCL-based pixel masking**  
+↓  
+**Seasonal median composites**  
+↓  
+**NDVI + GNDVI + NDRE + SAVI**  
+↓  
+**Seasonal comparison**  
+↓  
+**Correlation analysis and visualization**
 
-Formula:
+---
 
-NDVI = (NIR − Red) / (NIR + Red)
+## 1️⃣ Image Collection
 
-Sentinel-2 bands:
+Sentinel-2 Surface Reflectance Harmonized imagery was filtered to the **Changunarayan Municipality study area** for the year **2025**.
 
-Red = B4
-NIR = B8
-2. 🟩 GNDVI — Green Normalized Difference Vegetation Index
+---
 
-Uses the green band and is sensitive to vegetation chlorophyll and canopy condition.
+## 2️⃣ Cloud Masking
 
-Formula:
+Cloud masking was performed using the **Sentinel-2 Scene Classification Layer (SCL)** in Google Earth Engine.
 
-GNDVI = (NIR − Green) / (NIR + Green)
+The SCL information was used to keep useful pixels such as:
 
-Sentinel-2 bands:
+- **Vegetation**
+- **Bare soil**
+- **Water**
 
-Green = B3
-NIR = B8
-3. 🔵 NDRE — Normalized Difference Red Edge Index
+Clouds, cloud shadows, and other unwanted classes were masked before creating the seasonal composites.
 
-Uses a red-edge band and is sensitive to changes in vegetation chlorophyll and canopy condition.
+This step helps prevent clouds and their shadows from affecting the vegetation-index calculations.
 
-Formula:
+---
 
-NDRE = (NIR − Red Edge) / (NIR + Red Edge)
+## 3️⃣ Seasonal Compositing
 
-Sentinel-2 bands:
+The year 2025 was divided into four seasons:
 
-Red Edge = B5
-NIR = B8
-4. 🟠 SAVI — Soil Adjusted Vegetation Index
+| Season | Period |
+|---|---|
+| **Winter** | January–February 2025 |
+| **Pre-monsoon** | March–May 2025 |
+| **Monsoon** | June–September 2025 |
+| **Post-monsoon** | October–December 2025 |
 
-Used to reduce the influence of exposed soil on vegetation-index values.
+A **median composite** was generated for each season.
 
-Formula:
+This provides one representative satellite image for each season while reducing the influence of individual cloudy or abnormal observations.
 
-SAVI = ((NIR − Red) / (NIR + Red + 0.5)) × 1.5
+---
 
-where L = 0.5 is the soil-adjustment factor.
+# 🌿 4️⃣ Vegetation Indices
 
-📈 Seasonal Results
+## NDVI — Normalized Difference Vegetation Index
 
-The seasonal mean values of NDVI, GNDVI, NDRE, and SAVI were compared across winter, pre-monsoon, monsoon, and post-monsoon.
+NDVI was used to assess **general vegetation vigor**.
 
-The vegetation indices generally increased during the monsoon period and decreased after the monsoon, indicating stronger vegetation response during the main rainy/growing period.
+### Formula
 
-📊 Figure 1 — Seasonal Vegetation Indices
-<p align="center"> <img src="https://raw.githubusercontent.com/NishaKarki-Tech/seasonal-vegetation-dynamics-sentinel2/main/Figures/Figure1_Seasonal_Vegetation_Indices.png" alt="Seasonal Vegetation Indices" width="900"> </p>
+**NDVI = (NIR − Red) / (NIR + Red)**
 
-Figure 1. Seasonal variation in NDVI, GNDVI, NDRE, and SAVI during 2025.
+### Sentinel-2 bands
 
-🔗 Correlation Among Vegetation Indices
+- **Red = B4**
+- **NIR = B8**
 
-Correlation analysis was used to examine how strongly the four vegetation indices were related to each other in the seasonal dataset.
+---
 
-The indices showed very strong positive relationships within this dataset.
+## GNDVI — Green Normalized Difference Vegetation Index
 
-📊 Figure 2 — Correlation Heatmap
-<p align="center"> <img src="https://raw.githubusercontent.com/NishaKarki-Tech/seasonal-vegetation-dynamics-sentinel2/main/Figures/Figure3_Correlation_Heatmap.png" alt="Correlation Heatmap" width="900"> </p>
+GNDVI uses the green band and provides information related to **vegetation chlorophyll and canopy condition**.
 
-Figure 2. Correlation among NDVI, GNDVI, NDRE, and SAVI.
+### Formula
 
-🔑 Key Findings
-🌱 Four vegetation indices captured seasonal variation in vegetation response.
-🌧️ Vegetation-index values were generally highest during the monsoon period.
-📊 NDVI, GNDVI, NDRE, and SAVI showed very strong positive relationships in the seasonal dataset.
-🛰️ Sentinel-2 provided suitable data for seasonal vegetation monitoring.
-💻 The workflow integrated Google Earth Engine, Python, and ArcGIS Pro.
-💻 Google Earth Engine
+**GNDVI = (NIR − Green) / (NIR + Green)**
 
-The Sentinel-2 processing and vegetation-index workflow was developed in Google Earth Engine.
+### Sentinel-2 bands
 
-The script includes:
+- **Green = B3**
+- **NIR = B8**
 
-✅ Sentinel-2 image filtering
-✅ SCL-based pixel masking
-✅ Seasonal median compositing
-✅ NDVI calculation
-✅ GNDVI calculation
-✅ NDRE calculation
-✅ SAVI calculation
-✅ Seasonal statistics
-✅ Data export
+---
 
-GEE script: GEE/vegetation_analysis.js
+## NDRE — Normalized Difference Red Edge Index
 
-📂 Repository Structure
+NDRE uses a red-edge band and is useful for assessing **changes in vegetation chlorophyll and canopy condition**.
+
+### Formula
+
+**NDRE = (NIR − Red Edge) / (NIR + Red Edge)**
+
+### Sentinel-2 bands
+
+- **Red Edge = B5**
+- **NIR = B8**
+
+---
+
+## SAVI — Soil Adjusted Vegetation Index
+
+SAVI was used to reduce the influence of **exposed soil** on vegetation-index values.
+
+### Formula
+
+**SAVI = ((NIR − Red) / (NIR + Red + L)) × (1 + L)**
+
+where:
+
+**L = 0.5**
+
+Therefore:
+
+**SAVI = ((NIR − Red) / (NIR + Red + 0.5)) × 1.5**
+
+---
+
+# 📈 Seasonal Analysis
+
+The four vegetation indices were compared across:
+
+**Winter → Pre-monsoon → Monsoon → Post-monsoon**
+
+The analysis showed that vegetation-index values generally **increased during the monsoon period** and decreased after the monsoon.
+
+This indicates a stronger overall vegetation response during the main rainy/growing period.
+
+---
+
+# 📊 Results
+
+## Figure 1 — Seasonal Vegetation Indices
+
+![Seasonal Vegetation Indices](Figures/Figure1_Seasonal_Vegetation_Indices.png)
+
+**Figure 1.** Seasonal variation in **NDVI, GNDVI, NDRE, and SAVI** during 2025.
+
+The figure shows that all four indices followed a broadly similar seasonal pattern, with their values generally increasing during the monsoon period.
+
+---
+
+## Figure 2 — Correlation Among Vegetation Indices
+
+![Correlation Among Vegetation Indices](Figures/Figure3_Correlation_Heatmap.png)
+
+**Figure 2.** Correlation among the four vegetation indices.
+
+The indices showed **very strong positive relationships** in the seasonal dataset, indicating that they generally followed similar seasonal patterns.
+
+> **Note:** The correlation analysis is descriptive and is based on the seasonal observations.
+
+---
+
+# 🔬 Key Findings
+
+- **Sentinel-2 imagery** successfully captured seasonal vegetation variation in Changunarayan Municipality.
+- **NDVI, GNDVI, NDRE, and SAVI** all showed clear seasonal changes.
+- Vegetation-index values were generally **highest during the monsoon period**.
+- The four indices showed **very strong positive relationships** in the seasonal dataset.
+- The project demonstrates how **Google Earth Engine, Python, and GIS** can be integrated for remote-sensing-based vegetation monitoring.
+
+---
+
+# 💻 Google Earth Engine
+
+The Sentinel-2 processing and vegetation-index workflow was developed in **Google Earth Engine**.
+
+The workflow includes:
+
+- Sentinel-2 image filtering
+- SCL-based pixel masking
+- Seasonal median compositing
+- NDVI calculation
+- GNDVI calculation
+- NDRE calculation
+- SAVI calculation
+- Seasonal statistics
+- Data export
+
+### GEE Script
+
+`GEE/vegetation_analysis.js`
+
+---
+
+# 📂 Repository Structure
+
+```text
 seasonal-vegetation-dynamics-sentinel2/
 │
 ├── DATA/
@@ -202,24 +283,3 @@ seasonal-vegetation-dynamics-sentinel2/
 │   └── vegetation_analysis.js
 │
 └── README.md
-🚀 Future Improvements
-🌾 Apply an agricultural/crop-land mask for crop-specific analysis.
-📍 Validate satellite-derived vegetation patterns with field observations.
-🚁 Integrate UAV imagery for higher-resolution validation.
-📅 Extend the analysis to multiple years.
-🌦️ Integrate weather and environmental data.
-🤖 Explore machine-learning approaches for crop monitoring.
-📚 Skills Demonstrated
-Google Earth Engine
-Sentinel-2 Multispectral Remote Sensing
-Vegetation Index Analysis
-Seasonal Remote Sensing Analysis
-Python Data Analysis and Visualization
-GIS Mapping
-Spatial Data Processing
-Agricultural Remote Sensing
-GitHub Documentation
-📬 Contact
-
-Nisha Karki
-Remote Sensing & Precision Agriculture Enthusiast
