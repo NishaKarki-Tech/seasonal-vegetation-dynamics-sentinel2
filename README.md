@@ -187,21 +187,17 @@ The seasonal mean values of the four vegetation indices were compared across win
 
 The results show that the vegetation indices generally increased during the monsoon period and decreased after the monsoon, indicating stronger vegetation response during the main rainy/growing period.
 
-Figure 1 — Seasonal Vegetation Indices
+## Figure 1 — Seasonal Vegetation Indices
 
-<img src="https://raw.githubusercontent.com/NishaKarki-Tech/crop-stress-monitoring-sentinel2/main/Figures/Figure1_Seasonal_Vegetation_Indices.png" alt="Seasonal Vegetation Indices" width="850">
+![Seasonal Vegetation Indices](https://raw.githubusercontent.com/NishaKarki-Tech/seasonal-vegetation-dynamics-sentinel2/main/Figures/Figure1_Seasonal_Vegetation_Indices.png)
 
-Figure 1. Seasonal variation in NDVI, GNDVI, NDRE, and SAVI during 2025.
+**Figure 1.** Seasonal variation in NDVI, GNDVI, NDRE, and SAVI during 2025.
 
-Figure 2 — Correlation Among Vegetation Indices
+## Figure 2 — Correlation Among Vegetation Indices
 
-<img src="https://raw.githubusercontent.com/NishaKarki-Tech/crop-stress-monitoring-sentinel2/main/Figures/Figure3_Correlation_Heatmap.png" alt="Correlation Heatmap" width="850">
+![Correlation Heatmap](https://raw.githubusercontent.com/NishaKarki-Tech/seasonal-vegetation-dynamics-sentinel2/main/Figures/Figure3_Correlation_Heatmap.png)
 
-Figure 2. Correlation among the four vegetation indices.
-
-The four indices showed very strong positive correlations in the seasonal dataset, indicating that they generally followed similar seasonal patterns.
-
-Note: The correlation analysis is descriptive and is based on the seasonal observations.
+**Figure 2.** Correlation among the four vegetation indices.
 
 🔬 Key Findings
 
