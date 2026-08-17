@@ -21,11 +21,6 @@ Calculate NDVI, GNDVI, NDRE, and SAVI.
 
 Compare vegetation-index responses across four seasons.
 
-Examine the relationships among the vegetation indices.
-
-Develop a reproducible Google Earth Engine workflow for seasonal vegetation monitoring.
-
-Visualize the results using Python and GIS.
 
 📍 Study Area
 
