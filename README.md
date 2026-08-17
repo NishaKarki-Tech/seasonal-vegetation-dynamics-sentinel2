@@ -1,260 +1,317 @@
-# 🌱 Monsoon Crop Stress Monitoring Using Sentinel-2 Remote Sensing
+Seasonal Vegetation Dynamics Using Sentinel-2 Remote Sensing
 
-## Multi-Index Assessment of Seasonal Vegetation Dynamics in Changunarayan Municipality, Nepal (2025)
+Multi-Index Assessment of Seasonal Vegetation Dynamics in Changunarayan Municipality, Nepal (2025)
 
-**Author:** Nisha Karki  
-**Year:** 2026  
+Author: Nisha Karki
+Year: 2026
 
----
+📌 Project Overview
 
-## 📌 Project Overview
+This project analyzes seasonal vegetation dynamics in Changunarayan Municipality, Bhaktapur, Nepal using Sentinel-2 multispectral satellite imagery and vegetation indices.
 
-Agricultural productivity is strongly influenced by seasonal environmental changes, especially during the monsoon period when excessive rainfall, cloud cover, and water stress can affect crop growth.
+Four vegetation indices—NDVI, GNDVI, NDRE, and SAVI—were calculated for four seasons of 2025 to compare how vegetation response changed throughout the year. The workflow combines Google Earth Engine for satellite-data processing, Python for data analysis and visualization, and ArcGIS Pro for spatial mapping.
 
-This project evaluates seasonal vegetation dynamics and crop stress conditions in **Changunarayan Municipality, Nepal** using **Sentinel-2 multispectral satellite imagery** and remote sensing-based vegetation indices.
+🎯 Objectives
 
-The study integrates multiple vegetation indices to assess crop health, identify stressed areas, and develop a spatial crop condition classification map.
+Analyze seasonal vegetation dynamics using Sentinel-2 imagery.
 
----
+Calculate NDVI, GNDVI, NDRE, and SAVI for seasonal vegetation assessment.
 
-# 🎯 Objectives
+Compare vegetation-index responses across winter, pre-monsoon, monsoon, and post-monsoon periods.
 
-The main objectives of this study were:
+Examine the relationships among the vegetation indices.
 
-- To analyze seasonal vegetation dynamics using Sentinel-2 imagery.
-- To calculate vegetation indices for crop health assessment.
-- To evaluate monsoon crop stress conditions.
-- To classify crop areas based on vegetation response.
-- To generate spatial crop stress maps using Google Earth Engine.
-- To develop a reproducible remote sensing workflow for agricultural monitoring.
+Develop a reproducible Google Earth Engine workflow for seasonal vegetation monitoring.
 
----
+Visualize seasonal vegetation patterns using Python and GIS.
 
-# 📍 Study Area
+📍 Study Area
 
-**Location:** Changunarayan Municipality, Bhaktapur, Nepal  
+Changunarayan Municipality, Bhaktapur, Nepal
 
-The study area represents an agricultural landscape with mixed cropping systems, including seasonal crops influenced by monsoon rainfall patterns.
+The study area contains a mixed landscape including agricultural and other land-cover types. The analysis examines the spatial and seasonal variation in vegetation response across the municipality.
 
----
+🛰️ Data
 
-# 🛰️ Data Sources
+Sentinel-2 MSI Surface Reflectance
 
-## Satellite Data
+Satellite: Sentinel-2
 
-**Sentinel-2 MSI Surface Reflectance**
+Sensor: MultiSpectral Instrument (MSI)
 
-- Spatial Resolution: 10–20 m
-- Data Provider: Copernicus Sentinel Program
-- Platform: Google Earth Engine
+Dataset: COPERNICUS/S2_SR_HARMONIZED
 
-## Additional Data
+Study period: 2025
 
-- Municipal boundary shapefile
-- Field-based agricultural information
-- Remote sensing-derived vegetation metrics
+Spatial resolution: 10–20 m depending on the spectral band
 
----
+Platform: Google Earth Engine
 
-# 🛠️ Software and Tools
+A Changunarayan Municipality boundary was used to define the study area.
 
-| Tool | Purpose |
-|---|---|
-| Google Earth Engine | Satellite image processing and index calculation |
-| Sentinel-2 MSI | Multispectral satellite data |
-| Python | Data analysis and visualization |
-| Google Colab | Computational environment |
-| ArcGIS Pro | Spatial visualization and mapping |
-| GitHub | Project documentation and sharing |
+🛠️ Tools
 
----
+Tool
 
-# 🌿 Methodology Workflow
----
+Purpose
 
-# 📊 Vegetation Indices Used
+Google Earth Engine
 
-## 1. NDVI (Normalized Difference Vegetation Index)
+Sentinel-2 filtering, SCL masking, seasonal compositing, index calculation, and export
 
-Used to assess overall vegetation vigor and biomass condition.
+Python / Google Colab
+
+Data analysis, comparison, correlation analysis, and visualization
+
+ArcGIS Pro
+
+Spatial visualization and map preparation
+
+GitHub
+
+Code, figures, data, and project documentation
+
+🔬 Methodology
+
+Overall workflow
+
+Sentinel-2 imagery
+↓
+Study-area filtering
+↓
+SCL-based unwanted-pixel masking
+↓
+Seasonal median composites
+↓
+NDVI + GNDVI + NDRE + SAVI
+↓
+Seasonal mean calculation
+↓
+Seasonal comparison and correlation analysis
+↓
+Visualization and GIS mapping
+
+1. Sentinel-2 image collection
+
+Sentinel-2 Surface Reflectance Harmonized imagery was filtered to the Changunarayan study area for 2025.
+
+2. Cloud and unwanted-pixel masking
+
+The Sentinel-2 Scene Classification Layer (SCL) was used to retain pixels classified as:
+
+Vegetation
+
+Bare soil
+
+Water
+
+Other SCL classes, including cloud and cloud-shadow classes, were excluded before creating seasonal composites.
+
+This pixel-level masking helps reduce contamination of the vegetation-index calculations by clouds and their shadows.
+
+3. Seasonal composites
+
+Median composites were generated for four periods:
+
+Season
+
+Period used
+
+Winter
+
+January–February 2025
+
+Pre-monsoon
+
+March–May 2025
+
+Monsoon
+
+June–September 2025
+
+Post-monsoon
+
+October–December 2025
+
+4. Vegetation-index calculation
+
+The four indices were calculated for each seasonal composite.
+
+🌿 Vegetation Indices
+
+1. NDVI — Normalized Difference Vegetation Index
+
+NDVI is a widely used index for assessing general vegetation vigor.
 
 Formula:
 
 NDVI = (NIR - Red) / (NIR + Red)
 
+For Sentinel-2:
 
----
+Red = B4
 
-## 2. GNDVI (Green Normalized Difference Vegetation Index)
+NIR = B8
 
-Sensitive to chlorophyll variation and vegetation nitrogen status.
+2. GNDVI — Green Normalized Difference Vegetation Index
+
+GNDVI replaces the red band with the green band and is sensitive to variation in vegetation chlorophyll and canopy condition.
 
 Formula:
 
 GNDVI = (NIR - Green) / (NIR + Green)
 
+For Sentinel-2:
 
----
+Green = B3
 
-## 3. NDRE (Normalized Difference Red Edge Index)
+NIR = B8
 
-Used for detecting crop stress and chlorophyll changes.
+3. NDRE — Normalized Difference Red Edge Index
+
+NDRE uses a red-edge band and is sensitive to changes in vegetation chlorophyll and canopy condition.
 
 Formula:
 
 NDRE = (NIR - Red Edge) / (NIR + Red Edge)
 
+In this project:
 
----
+Red Edge = B5
 
-## 4. SAVI (Soil Adjusted Vegetation Index)
+NIR = B8
 
-Applied to reduce soil background influence.
+4. SAVI — Soil Adjusted Vegetation Index
 
-Formula:
+SAVI reduces the influence of exposed soil on vegetation-index values.
 
-SAVI = ((NIR - Red) / (NIR + Red + L)) × (1 + L)
+Formula used in the project:
 
-where L represents soil adjustment factor.
+SAVI = ((NIR - Red) / (NIR + Red + 0.5)) × 1.5
 
----
+where L = 0.5 is the soil-adjustment factor.
 
-# 📈 Seasonal Analysis
+📈 Seasonal Analysis
 
-Vegetation response was evaluated across different agricultural seasons:
+The seasonal mean values of all four vegetation indices were calculated and compared.
 
-| Season | Description |
-|---|---|
-| Winter | Baseline vegetation condition |
-| Pre-monsoon | Vegetation development before rainfall |
-| Monsoon | Peak crop growth and stress assessment |
+The analysis provides a simple way to examine how vegetation response changes from:
 
----
+Winter → Pre-monsoon → Monsoon → Post-monsoon
 
-# 🌧️ Monsoon Crop Stress Assessment
+The seasonal results show that vegetation-index values generally increased during the monsoon period and decreased after the monsoon, indicating stronger vegetation response during the main rainy/growing period.
 
-A threshold-based classification approach was applied to categorize vegetation condition.
+📊 Results
 
-Classes included:
+Seasonal Vegetation Indices
 
-| Class | Interpretation |
-|---|---|
-| Healthy Vegetation | High vegetation activity |
-| Moderate Stress | Reduced vegetation response |
-| High Stress | Low vegetation activity |
 
----
 
-# 🗺️ Results and Outputs
+Figure 1. Seasonal variation in NDVI, GNDVI, NDRE, and SAVI during 2025.
 
-The project generated:
+The figure shows that all four indices followed broadly similar seasonal patterns, with their highest values occurring during the monsoon period.
 
-✅ Seasonal vegetation index maps  
-✅ Crop stress classification map  
-✅ Spatial distribution of crop conditions  
-✅ GeoTIFF output for GIS analysis  
-✅ Statistical comparison of vegetation indices  
+Correlation Among Vegetation Indices
 
----
-## 📷 Figures
 
-### Crop Stress Classification Map
 
-![Crop Stress Classification Map](./Figures/Crop_Stress_Classification_Map_2025.png.png)
+Figure 2. Correlation among the four vegetation indices.
 
----
+The indices showed very strong positive correlations in the seasonal dataset, indicating that they generally followed similar seasonal patterns.
 
-### Seasonal Vegetation Indices
+Note: The correlation analysis is based on the seasonal observations and is used here as a descriptive comparison of the indices.
 
-![Seasonal Vegetation Indices](./Figures/Figure1_Seasonal_Vegetation_Indices.png)
+🔬 Key Findings
 
----
+Sentinel-2 imagery was successfully used to assess seasonal vegetation dynamics in Changunarayan Municipality.
 
-### Correlation Heatmap
+NDVI, GNDVI, NDRE, and SAVI all showed clear seasonal variation.
 
-![Correlation Heatmap](./Figures/Figure3_Correlation_Heatmap.png)
+Vegetation-index values were generally highest during the monsoon period.
 
----
+The four indices showed very strong positive relationships in the seasonal dataset.
 
-### Crop Stress Assessment
+The workflow demonstrates how Google Earth Engine, Python, and GIS can be combined for satellite-based vegetation monitoring.
 
-![Crop Stress Assessment](./Figures/Figure4_Crop_Stress_Assessment.png)
+💻 Google Earth Engine
 
----
-
-### Crop Stress Distribution
-
-![Crop Stress Distribution](./Figures/Figure_Crop_Stress_Distribution.png.png)
-
-# 📂 Repository Structure
-# 💻 Google Earth Engine Implementation
-
-The complete Sentinel-2 preprocessing and vegetation index calculation workflow was developed in Google Earth Engine.
+The main preprocessing and vegetation-index workflow was developed in Google Earth Engine.
 
 The script includes:
 
-- Sentinel-2 image filtering
-- Cloud masking
-- Seasonal compositing
-- Vegetation index calculation
-- Crop stress classification
-- Map export
+Sentinel-2 image filtering
 
-GEE scripts are available in:
-# 🔬 Key Findings
+SCL-based pixel masking
 
-- Sentinel-2 vegetation indices successfully captured seasonal crop variability.
-- NDVI, GNDVI, NDRE, and SAVI provided complementary information for crop condition assessment.
-- Monsoon conditions showed spatial variation in vegetation stress patterns.
-- Remote sensing-based monitoring can support rapid agricultural assessment.
+Seasonal median compositing
 
----
+NDVI calculation
 
-# 🌱 Applications
+GNDVI calculation
 
-This workflow can support:
+NDRE calculation
 
-- Precision agriculture
-- Crop monitoring
-- Early stress detection
-- Agricultural decision-making
-- Climate-resilient farming practices
+SAVI calculation
 
----
+Seasonal mean statistics
 
-# 🚀 Future Improvements
+CSV export
 
-Future work can include:
+GEE script: vegetation_analysis.js
 
-- Integration of crop type classification models
-- Machine learning-based stress prediction
-- UAV-based validation
-- Field-level crop yield analysis
-- Multi-year monitoring
+📂 Repository Structure
 
----
+crop-stress-monitoring-sentinel2/
+│
+├── DATA/
+│   └── Seasonal_Vegetation_Indices_2025.csv
+│
+├── Figures/
+│   ├── Figure1_Seasonal_Vegetation_Indices.png
+│   └── Figure3_Correlation_Heatmap.png
+│
+├── GEE/
+│   └── vegetation_analysis.js
+│
+└── README.md
 
-# 📚 Skills Demonstrated
+Other files generated during earlier exploratory analysis may remain in the repository but are not part of the main seasonal vegetation analysis presented here.
 
-- Google Earth Engine
-- Sentinel-2 Remote Sensing
-- Vegetation Index Analysis
-- GIS Mapping
-- Agricultural Monitoring
-- Spatial Data Processing
-- Precision Agriculture Applications
+🚀 Future Improvements
 
----
+Apply an agricultural/crop-land mask for crop-specific analysis.
 
-# 📜 License
+Validate satellite-derived vegetation patterns using field observations.
 
-This project is created for academic and research purposes.
+Integrate UAV imagery for higher-resolution validation.
 
----
+Extend the analysis to multiple years.
 
-# 📬 Contact
+Incorporate weather and environmental variables.
 
-**Nisha Karki**  
-Research Assistant | Remote Sensing & Precision Agriculture Enthusiast
+Explore machine-learning approaches for crop monitoring.
 
-GitHub: https://github.com/NishaKarki-Tech
+📚 Skills Demonstrated
+
+Google Earth Engine
+
+Sentinel-2 Multispectral Remote Sensing
+
+Vegetation Index Analysis
+
+Seasonal Remote Sensing Analysis
+
+Python Data Analysis and Visualization
+
+GIS Mapping
+
+Spatial Data Processing
+
+Agricultural Remote Sensing
+
+GitHub Documentation
+
+📬 Contact
+
+Nisha Karki
+Remote Sensing & Precision Agriculture Enthusiast
